@@ -1,7 +1,12 @@
 ﻿@model IEnumerable<LuxMobile.Models.Services>
 @{
-    
+
 }
+@using Microsoft.AspNetCore.Identity
+@using LuxMobile.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 <div class="hero-wrap" style="background-image: url('https://www.salonsuccessacademy.com/wp-content/uploads/2017/04/iStock-640279638-1024x684.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
@@ -59,49 +64,241 @@
 <section class="ftco-section ftco-no-pb" id="services">
     <div class="container">
         <h2 style="text-align: center">Products and Services</h2>
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ServiceName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Description)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Price)
-                    </th>
-                    <th>
-                        @*<a asp-action="Create">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            @if (@UserManager.GetUserName(User).ToString() == "gilbertcoquilla")
+            {
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ServiceName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Price)
+                            </th>
+                            <th>
+                                <a asp-action="Create">
+                                    <input type="submit" value="Add" class="btn btn-primary" />
+                                </a>
+                            </th>
+                        </tr>
+
+                    </tbody>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ServiceName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td>
+
+                                    <!--<a asp-action="Edit" asp-route-id="@item.ServiceNo">Edit</a> |-->
+                                    @*<a asp-action="Details" asp-route-id="@item.ServiceNo">Details</a> |*@
+                                    <!--<a asp-action="Delete" asp-route-id="@item.ServiceNo" onclick='return confirm("Are you sure?");'>Delete</a>-->
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            @if (@UserManager.GetUserName(User).ToString() == "biancaongkingco")
+            {
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ServiceName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Price)
+                            </th>
+                            <th>
+                                <a asp-action="Create">
+                                    <input type="submit" value="Add" class="btn btn-primary" />
+                                </a>
+                            </th>
+                        </tr>
+
+                    </tbody>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ServiceName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td>
+
+                                    <!--<a asp-action="Edit" asp-route-id="@item.ServiceNo">Edit</a> |-->
+                                    @*<a asp-action="Details" asp-route-id="@item.ServiceNo">Details</a> |*@
+                                    <!--<a asp-action="Delete" asp-route-id="@item.ServiceNo" onclick='return confirm("Are you sure?");'>Delete</a>-->
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            @if (@UserManager.GetUserName(User).ToString() == "shirleypaz")
+            {
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ServiceName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Price)
+                            </th>
+                            <th>
+                                <a asp-action="Create">
+                                    <input type="submit" value="Add" class="btn btn-primary" />
+                                </a>
+                            </th>
+                        </tr>
+
+                    </tbody>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ServiceName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td>
+
+                                    <!--<a asp-action="Edit" asp-route-id="@item.ServiceNo">Edit</a> |-->
+                                    @*<a asp-action="Details" asp-route-id="@item.ServiceNo">Details</a> |*@
+                                    <!--<a asp-action="Delete" asp-route-id="@item.ServiceNo" onclick='return confirm("Are you sure?");'>Delete</a>-->
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ServiceName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Price)
+                            </th>
+                            <th>
+                                @*<a asp-action="Create">
+                                    <input type="submit" value="Add" class="btn btn-primary" />
+                                </a>*@
+                            </th>
+                        </tr>
+
+                    </tbody>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ServiceName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td>
+
+                                    <!--<a asp-action="Edit" asp-route-id="@item.ServiceNo">Edit</a> |-->
+                                    @*<a asp-action="Details" asp-route-id="@item.ServiceNo">Details</a> |*@
+                                    <!--<a asp-action="Delete" asp-route-id="@item.ServiceNo" onclick='return confirm("Are you sure?");'>Delete</a>-->
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+
+        }
+        else
+        {
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ServiceName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th>
+                            @*<a asp-action="Create">
                                 <input type="submit" value="Add" class="btn btn-primary" />
                             </a>*@
-                    </th>
-                </tr>
-
-            </tbody>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ServiceName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Price)
-                        </td>
-                        <td>
-
-                            <!--<a asp-action="Edit" asp-route-id="@item.ServiceNo">Edit</a> |-->
-                            @*<a asp-action="Details" asp-route-id="@item.ServiceNo">Details</a> |*@
-                            <!--<a asp-action="Delete" asp-route-id="@item.ServiceNo" onclick='return confirm("Are you sure?");'>Delete</a>-->
-                        </td>
+                        </th>
                     </tr>
-                }
-            </tbody>
-        </table>
+
+                </tbody>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ServiceName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+
+                                <!--<a asp-action="Edit" asp-route-id="@item.ServiceNo">Edit</a> |-->
+                                @*<a asp-action="Details" asp-route-id="@item.ServiceNo">Details</a> |*@
+                                <!--<a asp-action="Delete" asp-route-id="@item.ServiceNo" onclick='return confirm("Are you sure?");'>Delete</a>-->
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
     </div>
 </section>
 
