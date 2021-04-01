@@ -66,7 +66,7 @@
         <h2 style="text-align: center">Products and Services</h2>
         @if (SignInManager.IsSignedIn(User))
         {
-            @if (@UserManager.GetUserName(User).ToString() == "gilbertcoquilla")
+            @if (@UserManager.GetUserName(User).ToString() == "gilbertcoquilla" || @UserManager.GetUserName(User).ToString() == "biancaongkingco" || @UserManager.GetUserName(User).ToString() == "shirleypaz")
             {
                 <table class="table">
                     <tbody>
@@ -112,98 +112,7 @@
                     </tbody>
                 </table>
             }
-            @if (@UserManager.GetUserName(User).ToString() == "biancaongkingco")
-            {
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.ServiceName)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Description)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Price)
-                            </th>
-                            <th>
-                                <a asp-action="Create">
-                                    <input type="submit" value="Add" class="btn btn-primary" />
-                                </a>
-                            </th>
-                        </tr>
-
-                    </tbody>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ServiceName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Description)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Price)
-                                </td>
-                                <td>
-
-                                    <!--<a asp-action="Edit" asp-route-id="@item.ServiceNo">Edit</a> |-->
-                                    @*<a asp-action="Details" asp-route-id="@item.ServiceNo">Details</a> |*@
-                                    <!--<a asp-action="Delete" asp-route-id="@item.ServiceNo" onclick='return confirm("Are you sure?");'>Delete</a>-->
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            }
-            @if (@UserManager.GetUserName(User).ToString() == "shirleypaz")
-            {
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.ServiceName)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Description)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Price)
-                            </th>
-                            <th>
-                                <a asp-action="Create">
-                                    <input type="submit" value="Add" class="btn btn-primary" />
-                                </a>
-                            </th>
-                        </tr>
-
-                    </tbody>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ServiceName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Description)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Price)
-                                </td>
-                                <td>
-
-                                    <!--<a asp-action="Edit" asp-route-id="@item.ServiceNo">Edit</a> |-->
-                                    @*<a asp-action="Details" asp-route-id="@item.ServiceNo">Details</a> |*@
-                                    <!--<a asp-action="Delete" asp-route-id="@item.ServiceNo" onclick='return confirm("Are you sure?");'>Delete</a>-->
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            }
+            
             else
             {
                 <table class="table">
