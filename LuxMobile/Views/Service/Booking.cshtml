@@ -1,0 +1,38 @@
+﻿@model LuxMobile.Models.Services
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!--Header-->
+<div class="hero-wrap" style="background-image: url('https://www.salonsuccessacademy.com/wp-content/uploads/2017/04/iStock-640279638-1024x684.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-8 ftco-animate d-flex align-items-end">
+                <div class="text w-100 text-center" style="color:white">
+                    <h1 class="mb-4">Book an <span>Appointment</span>.</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--White Space-->
+<br />
+<br />
+<div class="container">
+    @Html.Partial("Booking1")
+    @Html.Partial("Booking2")
+    @Html.Partial("Booking3")
+</div>
+<br />
+<br />
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+
+@*@section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@

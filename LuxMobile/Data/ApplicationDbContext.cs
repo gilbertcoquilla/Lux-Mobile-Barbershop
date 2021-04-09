@@ -18,5 +18,8 @@ namespace LuxMobile.Data
         }
 
         public DbSet<Services> Services { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<BookingDetails> BookingDetails { get; set; }
+        public DbSet<Barber> Barbers { get; set; }
     }
 }

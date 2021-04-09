@@ -1,0 +1,61 @@
+﻿@model LuxMobile.Models.Appointment
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<!--White Space-->
+<br />
+<br />
+<div class="container">
+
+
+    <!--Form-->
+    <h3 style="text-align:center">Book an appointment</h3>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Create">
+                <!-- KULANG PA FOR DATE AND TIME-->
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Barber" class="control-label"></label>
+                    <input asp-for="Barber" class="form-control" />
+                    <span asp-validation-for="Barber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PaymentMethod" class="control-label"></label>
+                    <textarea asp-for="PaymentMethod" class="form-control"></textarea>
+                    <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Service" class="control-label"></label>
+                    <input asp-for="Service" class="form-control" />
+                    <span asp-validation-for="Service" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BookingNo" class="control-label"></label>
+                    <input asp-for="BookingNo" class="form-control" />
+                    <span asp-validation-for="BookingNo" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>*@
+            </form>
+        </div>
+
+    </div>
+
+</div>
+<br />
+<br />
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+
+@*@section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@

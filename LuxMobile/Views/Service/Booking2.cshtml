@@ -1,0 +1,51 @@
+﻿@model LuxMobile.Models.BookingDetails
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<!--White Space-->
+<br />
+<br />
+<div class="container">
+
+
+    <!--Form-->
+    <h3 style="text-align:center">Booking Details</h3>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ServicesAvailed" class="control-label"></label>
+                    <input asp-for="ServicesAvailed" class="form-control" />
+                    <span asp-validation-for="ServicesAvailed" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TotalPrice" class="control-label"></label>
+                    <textarea asp-for="TotalPrice" class="form-control"></textarea>
+                    <span asp-validation-for="TotalPrice" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>*@
+            </form>
+        </div>
+
+    </div>
+
+</div>
+<br />
+<br />
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+
+@*@section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@
