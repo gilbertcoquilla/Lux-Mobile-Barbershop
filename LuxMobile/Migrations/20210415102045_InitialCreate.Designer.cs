@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LuxMobile.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210310174821_CreateIdentitySchema")]
-    partial class CreateIdentitySchema
+    [Migration("20210415102045_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,12 +44,6 @@ namespace LuxMobile.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StreetAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CityAddress")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -96,6 +90,77 @@ namespace LuxMobile.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("LuxMobile.Models.Appointment", b =>
+                {
+                    b.Property<int>("AppointmentNo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("BarberNo")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BookingNo1")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PaymentMethod")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ServiceNo")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("AppointmentNo");
+
+                    b.HasIndex("BarberNo");
+
+                    b.HasIndex("BookingNo1");
+
+                    b.HasIndex("ServiceNo");
+
+                    b.ToTable("Appointments");
+                });
+
+            modelBuilder.Entity("LuxMobile.Models.Barber", b =>
+                {
+                    b.Property<int>("BarberNo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BarberName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BarberNo");
+
+                    b.ToTable("Barbers");
+                });
+
+            modelBuilder.Entity("LuxMobile.Models.BookingDetails", b =>
+                {
+                    b.Property<int>("BookingNo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ServicesAvailed")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("BookingNo");
+
+                    b.ToTable("BookingDetails");
                 });
 
             modelBuilder.Entity("LuxMobile.Models.Services", b =>
@@ -253,6 +318,27 @@ namespace LuxMobile.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("LuxMobile.Models.Appointment", b =>
+                {
+                    b.HasOne("LuxMobile.Models.Barber", "Barber")
+                        .WithMany()
+                        .HasForeignKey("BarberNo");
+
+                    b.HasOne("LuxMobile.Models.BookingDetails", "BookingNo")
+                        .WithMany()
+                        .HasForeignKey("BookingNo1");
+
+                    b.HasOne("LuxMobile.Models.Services", "Service")
+                        .WithMany()
+                        .HasForeignKey("ServiceNo");
+
+                    b.Navigation("Barber");
+
+                    b.Navigation("BookingNo");
+
+                    b.Navigation("Service");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
