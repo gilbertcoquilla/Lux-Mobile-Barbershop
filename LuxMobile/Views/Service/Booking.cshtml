@@ -1,7 +1,11 @@
-﻿@model LuxMobile.Models.Services
+﻿@using Microsoft.AspNetCore.Identity
+@using LuxMobile.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Booking";
 }
 
 <!--Header-->
@@ -22,9 +26,17 @@
 <br />
 <br />
 <div class="container">
-    @Html.Partial("Booking1")
-    @Html.Partial("Booking2")
-    @Html.Partial("Booking3")
+    @if (SignInManager.IsSignedIn(User))
+    {
+        @Html.Partial("Booking1")
+        @Html.Partial("Booking2")
+        @Html.Partial("Booking3")
+    }
+    else
+    {
+        <h2 class="mb-4" style="text-align: center">Please login first to continue.</h2>
+    }
+
 </div>
 <br />
 <br />

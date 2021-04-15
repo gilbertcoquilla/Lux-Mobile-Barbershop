@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using LuxMobile.Data;
 using LuxMobile.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace LuxMobile.Controllers
 {
@@ -109,6 +110,11 @@ namespace LuxMobile.Controllers
             context1.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Booking()
+        {
+            return View();
         }
     }
 }

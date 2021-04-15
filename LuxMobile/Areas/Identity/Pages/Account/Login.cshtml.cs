@@ -64,6 +64,11 @@ namespace LuxMobile.Areas.Identity.Pages.Account
             public bool RememberMe { get; set; }
         }
 
+        //Login Credentials of Admin Users: (Username - Password)
+        //gilbertcoquilla - Coquilla.1922
+        //biancaongkingco - Ongkingco.0409
+        //shirleypaz - Shirley.100
+
         public async Task OnGetAsync(string returnUrl = null)
         {
             if (!string.IsNullOrEmpty(ErrorMessage))
