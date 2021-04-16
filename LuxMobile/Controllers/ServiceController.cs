@@ -116,5 +116,35 @@ namespace LuxMobile.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Book(Appointment app, BookingDetails bd, Barber br)
+        {
+            var app1 = new Appointment()
+            {
+                Date = app.Date,
+                Time = app.Time,
+                PaymentMethod = app.PaymentMethod
+            };
+
+            var bd1 = new BookingDetails()
+            {
+                ServicesAvailed = bd.ServicesAvailed,
+                TotalPrice = bd.TotalPrice
+            };
+
+            var br1 = new Barber()
+            {
+                BarberName = br.BarberName
+            };
+
+            context1.Appointments.Add(app1);
+            context1.BookingDetails.Add(bd1);
+            context1.Barbers.Add(br1);
+            context1.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
     }
 }
