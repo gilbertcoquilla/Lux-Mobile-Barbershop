@@ -10,7 +10,7 @@ namespace LuxMobile.Models
 {
     public class ContactView
     {
-       [Display(Name = "Sender Name")]
+       [Display(Name = "Your Name")]
        [Required(ErrorMessage = "Required.")]
        public string SenderName { get; set; }
 
