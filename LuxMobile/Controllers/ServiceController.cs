@@ -116,9 +116,13 @@ namespace LuxMobile.Controllers
         {
             return View();
         }
-
+        public IActionResult BookedList()
+        {
+            var list = context1.Appointments.ToList();
+            return View(list);
+        }
         [HttpPost]
-        public IActionResult Book(Appointment app)
+        public IActionResult Booking(Appointment app)
         {
             var app1 = new Appointment()
             {
@@ -137,7 +141,7 @@ namespace LuxMobile.Controllers
 
             context1.Appointments.Add(app1);
             context1.SaveChanges();
-
+            ViewBag.Message = "Booking Successful";
             return RedirectToAction("Index");
 
         }

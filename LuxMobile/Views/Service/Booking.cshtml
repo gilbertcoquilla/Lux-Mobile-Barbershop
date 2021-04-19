@@ -64,7 +64,12 @@
 <div class="container">
     @if (SignInManager.IsSignedIn(User))
     {
-
+        @if (ViewBag.Message != null)
+        {
+            <div class="alert alert-success">
+                @ViewBag.Message
+            </div>
+        }
         <div class="row">
             <div class="col-md-12">
                 <form asp-action="Book">
@@ -73,7 +78,7 @@
                         <label asp-for="BarberName" class="control-label"></label>
                         <br />
                         <select name="BarberName" id="BarberName" asp-for="BarberName">
-                            <option></option>
+                            <option>Any Barber Available</option>
                             <option asp-for="BarberName" value="Jean">Jean</option>
                             <option asp-for="BarberName" value="Mark">Mark</option>
                             <option asp-for="BarberName" value="John">John</option>
@@ -111,16 +116,16 @@
                             <br />
                             <select name="Service1" id="Service1" asp-for="Service1">
                                 <option></option>
-                                <option value="Haircut">Haircut</option>
-                                <option value="Trim">Trim</option>
-                                <option value="Shave">Shave</option>
-                                <option value="BeardTrim">Beard Trim</option>
-                                <option value="Massage">Massage</option>
-                                <option value="Emperor">Emperor</option>
-                                <option value="King">King</option>
-                                <option value="Prince">Prince</option>
-                                <option value="Shampoo">Shampoo</option>
-                                <option value="Facial">Facial</option>
+                                <option value="Haircut">Haircut Php550</option>
+                                <option value="Trim">Trim Php400</option>
+                                <option value="Shave">Shave Php200</option>
+                                <option value="BeardTrim">Beard Trim Php200</option>
+                                <option value="Massage">Massage Php700</option>
+                                <option value="Emperor">Emperor Php3999</option>
+                                <option value="King">King Php1999</option>
+                                <option value="Prince">Prince Php1000</option>
+                                <option value="Shampoo">Shampoo Php300</option>
+                                <option value="Facial">Facial Php500</option>
                             </select>
                             <input id="total1" />
                             <span asp-validation-for="Service1" class="text-danger"></span>
@@ -133,16 +138,16 @@
                             <br />
                             <select name="Service2" id="Service2" asp-for="Service2">
                                 <option></option>
-                                <option value="Haircut">Haircut</option>
-                                <option value="Trim">Trim</option>
-                                <option value="Shave">Shave</option>
-                                <option value="BeardTrim">Beard Trim</option>
-                                <option value="Massage">Massage</option>
-                                <option value="Emperor">Emperor</option>
-                                <option value="King">King</option>
-                                <option value="Prince">Prince</option>
-                                <option value="Shampoo">Shampoo</option>
-                                <option value="Facial">Facial</option>
+                                <option value="Haircut">Haircut Php550</option>
+                                <option value="Trim">Trim Php400</option>
+                                <option value="Shave">Shave Php200</option>
+                                <option value="BeardTrim">Beard Trim Php200</option>
+                                <option value="Massage">Massage Php700</option>
+                                <option value="Emperor">Emperor Php3999</option>
+                                <option value="King">King Php1999</option>
+                                <option value="Prince">Prince Php1000</option>
+                                <option value="Shampoo">Shampoo Php300</option>
+                                <option value="Facial">Facial Php500</option>
                             </select>
                             <input id="total2" />
                             <span asp-validation-for="Service2" class="text-danger"></span>
@@ -155,16 +160,16 @@
                             <br />
                             <select name="Service3" id="Service3" asp-for="Service3">
                                 <option></option>
-                                <option value="Haircut">Haircut</option>
-                                <option value="Trim">Trim</option>
-                                <option value="Shave">Shave</option>
-                                <option value="BeardTrim">Beard Trim</option>
-                                <option value="Massage">Massage</option>
-                                <option value="Emperor">Emperor</option>
-                                <option value="King">King</option>
-                                <option value="Prince">Prince</option>
-                                <option value="Shampoo">Shampoo</option>
-                                <option value="Facial">Facial</option>
+                                <option value="Haircut">Haircut Php550</option>
+                                <option value="Trim">Trim Php400</option>
+                                <option value="Shave">Shave Php200</option>
+                                <option value="BeardTrim">Beard Trim Php200</option>
+                                <option value="Massage">Massage Php700</option>
+                                <option value="Emperor">Emperor Php3999</option>
+                                <option value="King">King Php1999</option>
+                                <option value="Prince">Prince Php1000</option>
+                                <option value="Shampoo">Shampoo Php300</option>
+                                <option value="Facial">Facial Php500</option>
                             </select>
                             <input id="total3" />
                             <span asp-validation-for="Service3" class="text-danger"></span>
