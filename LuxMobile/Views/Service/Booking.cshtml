@@ -72,7 +72,7 @@
         }
         <div class="row">
             <div class="col-md-12">
-                <form asp-action="Book">
+                <form asp-action="Booking">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="BarberName" class="control-label"></label>
@@ -178,6 +178,7 @@
 
                     <div class="form-group">
                         <label asp-for="TotalPrice" class="control-label"></label>
+
                         <input asp-for="TotalPrice" id="total" class="form-control" />
                         <span asp-validation-for="TotalPrice" class="text-danger"></span>
                     </div>

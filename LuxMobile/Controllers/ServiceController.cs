@@ -141,8 +141,9 @@ namespace LuxMobile.Controllers
 
             context1.Appointments.Add(app1);
             context1.SaveChanges();
-            ViewBag.Message = "Booking Successful";
-            return RedirectToAction("Index");
+            ViewBag.Message = "Booking Successful. We'll message you 30mins prior your booking";
+
+            return View();
 
         }
 
