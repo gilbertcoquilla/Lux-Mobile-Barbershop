@@ -3,10 +3,32 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LuxMobile.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Lux : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Appointments",
+                columns: table => new
+                {
+                    AppointmentNo = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BookingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PaymentMethod = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AccountNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AccountName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BarberName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Service1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Service2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Service3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TotalPrice = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Appointments", x => x.AppointmentNo);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -46,33 +68,6 @@ namespace LuxMobile.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Barbers",
-                columns: table => new
-                {
-                    BarberNo = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BarberName = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Barbers", x => x.BarberNo);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BookingDetails",
-                columns: table => new
-                {
-                    BookingNo = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ServicesAvailed = table.Column<int>(type: "int", nullable: false),
-                    TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BookingDetails", x => x.BookingNo);
                 });
 
             migrationBuilder.CreateTable(
@@ -196,57 +191,6 @@ namespace LuxMobile.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Appointments",
-                columns: table => new
-                {
-                    AppointmentNo = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Time = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    BarberNo = table.Column<int>(type: "int", nullable: true),
-                    PaymentMethod = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ServiceNo = table.Column<int>(type: "int", nullable: true),
-                    BookingNo1 = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Appointments", x => x.AppointmentNo);
-                    table.ForeignKey(
-                        name: "FK_Appointments_Barbers_BarberNo",
-                        column: x => x.BarberNo,
-                        principalTable: "Barbers",
-                        principalColumn: "BarberNo",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Appointments_BookingDetails_BookingNo1",
-                        column: x => x.BookingNo1,
-                        principalTable: "BookingDetails",
-                        principalColumn: "BookingNo",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Appointments_Services_ServiceNo",
-                        column: x => x.ServiceNo,
-                        principalTable: "Services",
-                        principalColumn: "ServiceNo",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Appointments_BarberNo",
-                table: "Appointments",
-                column: "BarberNo");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Appointments_BookingNo1",
-                table: "Appointments",
-                column: "BookingNo1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Appointments_ServiceNo",
-                table: "Appointments",
-                column: "ServiceNo");
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -306,12 +250,6 @@ namespace LuxMobile.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "Barbers");
-
-            migrationBuilder.DropTable(
-                name: "BookingDetails");
 
             migrationBuilder.DropTable(
                 name: "Services");

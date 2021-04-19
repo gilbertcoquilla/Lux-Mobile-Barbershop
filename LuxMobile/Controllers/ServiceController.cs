@@ -118,29 +118,24 @@ namespace LuxMobile.Controllers
         }
 
         [HttpPost]
-        public IActionResult Book(Appointment app, BookingDetails bd, Barber br)
+        public IActionResult Book(Appointment app)
         {
             var app1 = new Appointment()
             {
-                Date = app.Date,
-                Time = app.Time,
-                PaymentMethod = app.PaymentMethod
-            };
-
-            var bd1 = new BookingDetails()
-            {
-                ServicesAvailed = bd.ServicesAvailed,
-                TotalPrice = bd.TotalPrice
-            };
-
-            var br1 = new Barber()
-            {
-                BarberName = br.BarberName
+                BookingDate = app.BookingDate,
+                PaymentMethod = app.PaymentMethod,
+                BarberName = app.BarberName,
+                Address = app.Address,
+                AccountName = app.AccountName,
+                AccountNumber = app.AccountNumber,
+                //ServicesAvailed = app.ServicesAvailed,
+                Service1 = app.Service1,
+                Service2 = app.Service2,
+                Service3 = app.Service3,
+                TotalPrice = app.TotalPrice
             };
 
             context1.Appointments.Add(app1);
-            context1.BookingDetails.Add(bd1);
-            context1.Barbers.Add(br1);
             context1.SaveChanges();
 
             return RedirectToAction("Index");

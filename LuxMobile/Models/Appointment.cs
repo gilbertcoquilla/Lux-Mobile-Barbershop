@@ -12,26 +12,43 @@ namespace LuxMobile.Models
         [Key]
         public int AppointmentNo { get; set; }
 
-        [Display(Name = "Date")]
+        [Display(Name = "Date and Time")]
         [Required(ErrorMessage = "Required.")]
-        public DateTime Date { get; set; }
-
-        [Display(Name = "Date")]
-        [Required(ErrorMessage = "Required.")]
-        public DateTime Time { get; set; }
-
-        [Display(Name = "Barber")]
-        [Required(ErrorMessage = "Required.")]
-        public virtual Barber Barber { get; set; } //foreign key to Barber model class
+        public DateTime? BookingDate { get; set; }
 
         [Display(Name = "Payment Method")]
         [Required(ErrorMessage = "Required.")]
         public string PaymentMethod { get; set; }
 
-        [Required(ErrorMessage = "Required.")]
-        public virtual Services Service { get; set; } //foreign key to Services model class
+        [Display(Name = "Account Number")]
+        public string AccountNumber { get; set; }
+
+        [Display(Name = "Account Name")]
+        public string AccountName { get; set; }
 
         [Required(ErrorMessage = "Required.")]
-        public virtual BookingDetails BookingNo { get; set; } //foreign key to BookingDetails model class
+        [Display(Name = "Barber")]
+        public string BarberName { get; set; }
+
+        [Required(ErrorMessage = "Please enter your address.")]
+        [DataType(DataType.MultilineText)]
+        public string Address { get; set; }
+
+        //Services Availed
+        //[Display(Name = "Avail Services: (Maximum of 3)")]
+        //[Required(ErrorMessage = "Please select at least one (1).")]
+        //public string ServicesAvailed { get; set; }
+
+        [Display(Name = "Service")]
+        public string Service1 { get; set; }
+
+        [Display(Name = "Service")]
+        public string Service2 { get; set; }
+
+        [Display(Name = "Service")]
+        public string Service3 { get; set; }
+
+        [Display(Name = "Total Price")]
+        public string TotalPrice { get; set; }
     }
 }
