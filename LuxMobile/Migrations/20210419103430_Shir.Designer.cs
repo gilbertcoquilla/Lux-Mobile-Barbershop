@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LuxMobile.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210419081629_Lux")]
-    partial class Lux
+    [Migration("20210419103430_Shir")]
+    partial class Shir
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

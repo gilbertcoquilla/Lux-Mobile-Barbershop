@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LuxMobile.Migrations
 {
-    public partial class Lux : Migration
+    public partial class Shir : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
