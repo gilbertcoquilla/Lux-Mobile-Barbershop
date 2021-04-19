@@ -10,61 +10,43 @@ using System.Threading.Tasks;
 
 using LuxMobile.Areas.Identity.Pages.Account;
 using System.Net.Mail;
+using System.Net;
 
 namespace LuxMobile.Controllers
 {
     public class HomeController : Controller
     {
-        //ContactUs code came from https://www.codeproject.com/Tips/1081578/How-to-Implement-Contact-Us-Page-in-ASP-NET-MVC-AS
-        //NOTE : sender's name is still not visible in mail and cannot reply to the sender yet --- to be continued
-
-        [HttpGet]
-        public IActionResult ContactUs()
+        public IActionResult Contact()
         {
             return View();
         }
-
         [HttpPost]
-        public IActionResult ContactUs(ContactView vm)
+        public IActionResult Contact(ContactView record)
         {
-            if(ModelState.IsValid)
+            using (MailMessage mail = new MailMessage("LMB.ContactUs@gmail.com", record.Email))
             {
-                try
+                mail.Subject = record.Subject;
+
+                string message = "Hello, " + record.SenderName + "!<br/><br/> We have received your inquiry. Here are the details: <br/><br/>" +
+                    "Contact Number: <strong>" + record.ContactNo + "</strong></br> Message: <br/><strong>" + record.Message + "</strong><br/><br/>" +
+                    "Thank you for contacting us. We have received your email, and it will be assessed as soon as one becomes available. <br/></br><br/> " +
+                    "Best Regards, <br/><br/> LUX Mobile Team";
+                mail.Body = message;
+                mail.IsBodyHtml = true;
+
+                using (SmtpClient smtp = new SmtpClient())
                 {
-                    MailMessage msz = new MailMessage();
-
-                    //Email which you are getting from contact us page
-                    msz.From = new MailAddress(vm.Email); 
-                    
-                    //Where mail will be sent 
-                    msz.To.Add("lmb.ownerr@gmail.com");
-                    
-                    msz.Subject = vm.Subject;
-                    msz.Body = vm.Message;
-                    SmtpClient smtp = new SmtpClient();
-
                     smtp.Host = "smtp.gmail.com";
-
-                    smtp.Port = 587;
-
-                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     smtp.EnableSsl = true;
+                    NetworkCredential NetworkCred = new NetworkCredential("LMB.ContactUs@gmail.com", "Luxx2020");
                     smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = NetworkCred;
+                    smtp.Port = 587;
+                    smtp.Send(mail);
+                    ViewBag.Message = "Inquiry sent.";
 
-                    smtp.Credentials = new System.Net.NetworkCredential("LMB.ContactUs@gmail.com", "Luxx2020");
-
-                    smtp.Send(msz);
-
-                    ModelState.Clear();
-                    ViewBag.Message = "Thank you for contacting us. We'll get back to you as soon as possible.";
-                }
-                catch (Exception ex)
-                {
-                    ModelState.Clear();
-                    ViewBag.Message = $" Sorry we are facing Problem here {ex.Message}";
                 }
             }
-
             return View();
         }
 
