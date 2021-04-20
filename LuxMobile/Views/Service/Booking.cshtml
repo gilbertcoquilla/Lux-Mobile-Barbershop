@@ -114,7 +114,7 @@
                         <div class="form-group">
                             <label asp-for="Service1" class="control-label"></label>
                             <br />
-                            <select name="Service1" id="Service1" asp-for="Service1">
+                            <select name="Service1" id="Service1" asp-for="Service1" onchange="togglePrice(this);">
                                 <option></option>
                                 <option value="Haircut">Haircut Php550</option>
                                 <option value="Trim">Trim Php400</option>
@@ -127,7 +127,7 @@
                                 <option value="Shampoo">Shampoo Php300</option>
                                 <option value="Facial">Facial Php500</option>
                             </select>
-                            <input id="total1" />
+                            <input id="total1" value="" />
                             <span asp-validation-for="Service1" class="text-danger"></span>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                         <div class="form-group">
                             <label asp-for="Service2" class="control-label"></label>
                             <br />
-                            <select name="Service2" id="Service2" asp-for="Service2">
+                            <select name="Service2" id="Service2" asp-for="Service2"  onchange="togglePrice(this);">
                                 <option></option>
                                 <option value="Haircut">Haircut Php550</option>
                                 <option value="Trim">Trim Php400</option>
@@ -149,7 +149,7 @@
                                 <option value="Shampoo">Shampoo Php300</option>
                                 <option value="Facial">Facial Php500</option>
                             </select>
-                            <input id="total2" />
+                            <input id="total2" value="" />
                             <span asp-validation-for="Service2" class="text-danger"></span>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                         <div class="form-group">
                             <label asp-for="Service3" class="control-label"></label>
                             <br />
-                            <select name="Service3" id="Service3" asp-for="Service3">
+                            <select name="Service3" id="Service3" asp-for="Service3"  onchange="togglePrice(this);">
                                 <option></option>
                                 <option value="Haircut">Haircut Php550</option>
                                 <option value="Trim">Trim Php400</option>
@@ -171,7 +171,7 @@
                                 <option value="Shampoo">Shampoo Php300</option>
                                 <option value="Facial">Facial Php500</option>
                             </select>
-                            <input id="total3" />
+                            <input id="total3" value="" />
                             <span asp-validation-for="Service3" class="text-danger"></span>
                         </div>
                     </div>
@@ -229,4 +229,45 @@
 
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+@section Scripts{ 
+
+    <script>
+        function togglePrice(chosen) {
+
+            if ($(chosen).attr('id') == 'Service1') {
+                alert("service 1");
+                $service = $('#Service1').val(); 
+                console.log($service);
+                $('#total1').val(getPrice($service)); // not setting the value
+                console.log(getPrice($service));
+            }
+            else if ($(chosen).attr('id') == 'Service2') {
+                $('#total2').val(getPrice($('#Service3').val()));
+            }
+            else if ($(chosen).attr('id') == 'Service3') {
+                $('#total3').val(getPrice($('#Service3').val()));
+            }
+        }
+
+        function getPrice(serviceName) {
+            console.log(serviceName);
+            $.ajax({
+                url: location.origin + "/Service/GetPrice/" + serviceName,
+                type: "GET",
+                traditional: true,
+                success: function (data, textStatus) {
+                    alert(data);
+                    return data;
+                },
+                error: function () {
+                    swal("Something went wrong call the police");
+                    return 0;
+                }
+            });
+
+        }
+    </script>
+
+}
 
