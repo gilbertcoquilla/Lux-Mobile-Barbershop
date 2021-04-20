@@ -150,6 +150,7 @@ namespace LuxMobile.Controllers
             var service = context1.Services.Where(s => s.ServiceName == id).SingleOrDefault();
             if (service == null)
                 price = 0;
+
             else
                 price = service.Price;
             return Json(price);

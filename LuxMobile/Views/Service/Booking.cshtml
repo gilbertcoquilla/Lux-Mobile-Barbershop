@@ -57,10 +57,10 @@
         </div>
     </div>
 </div>
-
 <!--White Space-->
 <br />
 <br />
+
 <div class="container">
     @if (SignInManager.IsSignedIn(User))
     {
@@ -136,7 +136,7 @@
                         <div class="form-group">
                             <label asp-for="Service2" class="control-label"></label>
                             <br />
-                            <select name="Service2" id="Service2" asp-for="Service2"  onchange="togglePrice(this);">
+                            <select name="Service2" id="Service2" asp-for="Service2" onchange="togglePrice(this);">
                                 <option></option>
                                 <option value="Haircut">Haircut Php550</option>
                                 <option value="Trim">Trim Php400</option>
@@ -158,8 +158,8 @@
                         <div class="form-group">
                             <label asp-for="Service3" class="control-label"></label>
                             <br />
-                            <select name="Service3" id="Service3" asp-for="Service3"  onchange="togglePrice(this);">
-                                <option></option>
+                            <select name="Service3" id="Service3" asp-for="Service3" onchange="togglePrice(this);">
+                                <option> </option>
                                 <option value="Haircut">Haircut Php550</option>
                                 <option value="Trim">Trim Php400</option>
                                 <option value="Shave">Shave Php200</option>
@@ -179,7 +179,7 @@
                     <div class="form-group">
                         <label asp-for="TotalPrice" class="control-label"></label>
 
-                        <input asp-for="TotalPrice" id="total" class="form-control" />
+                        <input asp-for="TotalPrice" id="total" class="form-control" onchange="getPrice(this)" />
                         <span asp-validation-for="TotalPrice" class="text-danger"></span>
                     </div>
 
@@ -230,14 +230,14 @@
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
-@section Scripts{ 
+@section Scripts{
 
     <script>
         function togglePrice(chosen) {
 
             if ($(chosen).attr('id') == 'Service1') {
-                alert("service 1");
-                $service = $('#Service1').val(); 
+                alert("One Service To Avail Only");
+                $service = $('#Service1').val();
                 console.log($service);
                 $('#total1').val(getPrice($service)); // not setting the value
                 console.log(getPrice($service));

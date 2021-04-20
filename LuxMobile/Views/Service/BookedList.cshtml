@@ -4,25 +4,32 @@
 }
 @using Microsoft.AspNetCore.Identity
 @using LuxMobile.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 
-<div class="hero-wrap" style="background-image: url('https://www.salonsuccessacademy.com/wp-content/uploads/2017/04/iStock-640279638-1024x684.jpg');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-            <div class="col-md-8 ftco-animate d-flex align-items-end">
-                <div class="text w-100 text-center" style="color:white">
-                    <h1 class="mb-4">Booked <span>Appointments.</span></h1>
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    @if (@UserManager.GetUserName(User).ToString() == "barberjean" || @UserManager.GetUserName(User).ToString() == "jros" || @UserManager.GetUserName(User).ToString() == "barbermark")
+    {
+        <div class="hero-wrap" style="background-image: url('https://www.salonsuccessacademy.com/wp-content/uploads/2017/04/iStock-640279638-1024x684.jpg');" data-stellar-background-ratio="0.5">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row no-gutters slider-text align-items-center justify-content-center">
+                    <div class="col-md-8 ftco-animate d-flex align-items-end">
+                        <div class="text w-100 text-center" style="color:white">
+                            <h1 class="mb-4">Booked <span>Appointments.</span></h1>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-
-<section class="ftco-section " id="bookedlist">
-    <div class="container">
-        <h2 style="text-align: center">Schedule</h2>
+        <section class="ftco-section " id="bookedlist">
+            <div class="container">
+                <h2 style="text-align: center">Schedule</h2>
 
                 <table class="table" style="text-align: left">
                     <tbody>
@@ -37,7 +44,7 @@
                                 @Html.DisplayNameFor(model => model.AccountNumber)
                             </th>
                             <th>
-                               Barber
+                                Barber
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.BookingDate)
@@ -49,7 +56,7 @@
                                 Services
                             </th>
                             <th>
-     
+
                             </th>
                             <th>
 
@@ -66,47 +73,97 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr> 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.AppointmentNo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.AccountName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.AccountNumber)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.BarberName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.BookingDate)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Address)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Service1)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Service2)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Service3)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PaymentMethod)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TotalPrice)
-                            </td>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AppointmentNo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AccountName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AccountNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BarberName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BookingDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Address)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Service1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Service2)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Service3)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PaymentMethod)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                                </td>
 
-                        </tr>
+                            </tr>
                         }
                     </tbody>
                 </table>
-
-       
-
+            </div>
+        </section>
+    }
+}
+else
+{
+    <div class="hero-wrap" style="background-image: url('https://www.salonsuccessacademy.com/wp-content/uploads/2017/04/iStock-640279638-1024x684.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-8 ftco-animate d-flex align-items-end">
+                    <div class="text w-100 text-center" style="color:white">
+                        <h1 class="mb-4">Lux Mobile <span>Barbershop.</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
+
+    <div class="container">
+        <br /><br /><br /> 
+        <div class="row">
+            <br /><br /><br />
+            <div class="col-md-6 img img-2 d-flex justify-content-center align-items-center" style="background-image: url('https://i.ibb.co/cYGF77n/luxmob.jpg'); ">
+            </div>
+            <div class="col-md-6 wrap-about pl-md-5 ftco-animate py-5">
+                <div class="heading-section">
+                    <span class="subheading">Since 2001</span>
+                    <h2 class="mb-4">How We Started</h2>
+                    <p>
+                        Lux Mobile Barbershop is like an uber, but for haircuts. It was founded by Jean Karanji,
+                        he invited his barber friends to join him in giving free haircuts to homeless people.
+                        As the demand rises they decided to turn it into a business.
+                    </p>
+                    <p>
+                        On 2001, the company started in Poblacion, Makati. On December 2020 with an old coaster,
+                        they turned it into a mobile barbershop. Now you can stay at home and book your haircut at your doorstep.
+                    </p>
+                    <p class="year">
+                        <strong class="number" data-number="20">0</strong>
+                        <span>Years of Experience In Barbery</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-7 heading-section text-center ftco-animate">
+            <span class="subheading"></span>
+            <a href="https://localhost:44367/Service/Booking"><h3>Click Me To Book Now!</h3></a>
+        </div>
+    </div>
+}
+
+

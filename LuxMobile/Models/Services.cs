@@ -21,5 +21,6 @@ namespace LuxMobile.Models
 
         [Required(ErrorMessage = "Required.")]
         public decimal Price { get; set; }
+
     }
 }
