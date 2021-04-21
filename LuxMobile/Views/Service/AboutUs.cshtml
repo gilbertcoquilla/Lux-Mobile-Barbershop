@@ -63,11 +63,12 @@
 
 <section class="ftco-section ftco-no-pb" id="services">
     <div class="container">
-        <h2 style="text-align: center">Products and Services</h2>
+
         @if (SignInManager.IsSignedIn(User))
         {
             @if (@UserManager.GetUserName(User).ToString() == "gilbertcoquilla" || @UserManager.GetUserName(User).ToString() == "biancaongkingco" || @UserManager.GetUserName(User).ToString() == "shirleypaz")
             {
+                <h2 style="text-align: center" href="https://localhost:44367/Service/Index">List of Services</h2>
                 <table class="table">
                     <tbody>
                         <tr>
@@ -102,19 +103,19 @@
                                     @Html.DisplayFor(modelItem => item.Price)
                                 </td>
                                 <td>
-
-                                    <!--<a asp-action="Edit" asp-route-id="@item.ServiceNo">Edit</a> |-->
+                                    <a asp-action="Edit" asp-route-id="@item.ServiceNo">Edit</a> |
                                     @*<a asp-action="Details" asp-route-id="@item.ServiceNo">Details</a> |*@
-                                    <!--<a asp-action="Delete" asp-route-id="@item.ServiceNo" onclick='return confirm("Are you sure?");'>Delete</a>-->
+                                    <a asp-action="Delete" asp-route-id="@item.ServiceNo" onclick='return confirm("Are you sure?");'>Delete</a>
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
             }
-            
+
             else
             {
+                <h2 style="text-align: center" >Available Services</h2>
                 <table class="table">
                     <tbody>
                         <tr>
