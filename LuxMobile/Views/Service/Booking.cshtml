@@ -89,8 +89,6 @@
             </div>
         }
 
-        @*<partial name="ServicesList" />*@
-
         <div class="row">
             <div class="col-md-12">
                 <form asp-action="Booking">
@@ -154,7 +152,7 @@
                     <div class="form-group">
                         <label asp-for="TotalPrice" class="control-label"></label>
 
-                        <input asp-for="TotalPrice" id="total" value="" class="form-control" placeholder="Amount to Pay" />
+                        <input asp-for="TotalPrice" id="total" value="" class="form-control" placeholder="Amount to Pay" readonly />
                         <span asp-validation-for="TotalPrice" class="text-danger"></span>
                     </div>
 
