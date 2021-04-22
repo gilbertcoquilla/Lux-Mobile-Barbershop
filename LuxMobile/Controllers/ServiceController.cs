@@ -138,22 +138,25 @@ namespace LuxMobile.Controllers
                 TotalPrice = app.TotalPrice
             };
 
-            //var booked = app.BookingDate; 
-            //var dbooked = (from x in app1.BookingDate where x.BookingDate == booked select x).ToList();
-            //if (ModelState.IsValid)
-            //{
-            //    if (dbooked.count > 0)
-            //    {
-            //        ViewBag.Duplicate = "The date " + app.BookingDate + " is not available. Please pick a new Date and Time.";
-            //    }
-            //    else
-            //    {                }
+            //reference: https://www.c-sharpcorner.com/UploadFile/abhikumarvatsa/example-on-view-to-controller-httppost-warn-on-duplicate/
+
+            var dates = (from x in context1.Appointments where x.BookingDate == app.BookingDate select x).ToList();
+            if (ModelState.IsValid)
+            {
+                if (dates.Count > 0)
+                {
+                    ViewBag.ErrorMessage = "Appointment for " + app.BookingDate + " is already taken. Please select another time.";
+                }
+                else
+                {
                     context1.Appointments.Add(app1);
                     context1.SaveChanges();
-                    ViewBag.Message = "Success! You have booked an appointment on " + app.BookingDate + ".";
-                    ModelState.Clear(); 
-                return View();
+                    ViewBag.Message = "Booking Successful. We'll message you 30mins prior your booking";
+                    ModelState.Clear();
+                }
             }
+            return View();
+        }
            
         
 
