@@ -3,6 +3,10 @@
     "mssql1": {
       "type": "mssql",
       "connectionId": "MyConnection"
+    },
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "lux"
     }
   }
 }

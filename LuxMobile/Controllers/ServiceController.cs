@@ -8,6 +8,9 @@ using LuxMobile.Data;
 using LuxMobile.Models;
 using Microsoft.AspNetCore.Identity;
 
+using System.Net.Mail;
+using System.Net;
+
 namespace LuxMobile.Controllers
 {
     public class ServiceController : Controller
