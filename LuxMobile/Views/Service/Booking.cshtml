@@ -91,114 +91,122 @@
 
         @*<partial name="ServicesList" />*@
 
-<div class="row">
-    <div class="col-md-2"></div>
+        <div class="row">
+            <div class="col-md-2"></div>
 
-    <div class="col-md-8">
-        <form asp-action="Booking">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="BarberName" class="control-label"></label>
-                <br />
-                <select name="BarberName" id="BarberName" class="form-control" asp-for="BarberName">
-                    <option asp-for="BarberName" value="AnyBarber">Any Barber</option>
-                    <option asp-for="BarberName" value="Jean">Jean</option>
-                    <option asp-for="BarberName" value="Mark">Mark</option>
-                    <option asp-for="BarberName" value="Bart">Bart</option>
-                </select>
-                <span asp-validation-for="BarberName" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="BookingDate" class="control-label"></label>
-                <input asp-for="BookingDate" class="form-control" />
-                <span asp-validation-for="BookingDate" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="CustomerName" class="control-label"></label>
-                <input asp-for="CustomerName" value="@UserManager.GetUserName(User)" class="form-control" />
-                <span asp-validation-for="CustomerName" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <textarea asp-for="Address" class="form-control" placeholder=""></textarea>
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-
-            <div id="s1">
-                <div class="form-group">
-                    <label asp-for="Service" class="control-label"></label>
-                    <br />
-                        <select name="Service" id="Service1" asp-for="Service" class="form-control" onchange="totalPrice1(this)">
-                            <option></option>
-                            <option value="Haircut">Haircut </option>
-                            <option value="Trim">Trim </option>
-                            <option value="Shave">Shave </option>
-                            <option value="BeardTrim">Beard Trim </option>
-                            <option value="Massage">Massage </option>
-                            <option value="Emperor">Emperor's Package </option>
-                            <option value="King">King's Package </option>
-                            <option value="Prince">Prince's Package </option>
-                            <option value="Shampoo">Shampoo </option>
-                            <option value="Facial">Facial </option>
+            <div class="col-md-8">
+                <form asp-action="Booking">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="BarberName" class="control-label"></label>
+                        <br />
+                        <select name="BarberName" id="BarberName" class="form-control" asp-for="BarberName">
+                            <option asp-for="BarberName" value="AnyBarber">Any Barber</option>
+                            <option asp-for="BarberName" value="Jean">Jean</option>
+                            <option asp-for="BarberName" value="Mark">Mark</option>
+                            <option asp-for="BarberName" value="Bart">Bart</option>
                         </select>
-                        <span asp-validation-for="Service" class="text-danger"></span>
-                </div>
+                        <span asp-validation-for="BarberName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="BookingDate" class="control-label"></label>
+                        <input asp-for="BookingDate" class="form-control" />
+                        <span asp-validation-for="BookingDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="CustomerName" class="control-label"></label>
+                        <input asp-for="CustomerName" value="@UserManager.GetUserName(User)" class="form-control" />
+                        <span asp-validation-for="CustomerName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <textarea asp-for="Address" class="form-control" placeholder=""></textarea>
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+
+                    <div id="s1">
+                        <div class="form-group">
+                            <label asp-for="Service" class="control-label"></label>
+                            <br />
+                            <select name="Service" id="Service1" asp-for="Service" class="form-control" onchange="totalPrice1(this)">
+                                <option></option>
+                                <option value="Haircut">Haircut </option>
+                                <option value="Trim">Trim </option>
+                                <option value="Shave">Shave </option>
+                                <option value="BeardTrim">Beard Trim </option>
+                                <option value="Massage">Massage </option>
+                                <option value="Emperor">Emperor's Package </option>
+                                <option value="King">King's Package </option>
+                                <option value="Prince">Prince's Package </option>
+                                <option value="Shampoo">Shampoo </option>
+                                <option value="Facial">Facial </option>
+                            </select>
+                            <span asp-validation-for="Service" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TotalPrice" class="control-label"></label>
+
+                        <input asp-for="TotalPrice" id="total" value="" class="form-control" placeholder="Amount to Pay" readonly />
+                        <span asp-validation-for="TotalPrice" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PaymentMethod" class="control-label"></label>
+                        <br />
+                        <select name="PaymentMethod" id="PaymentMethod" class="form-control" asp-for="PaymentMethod" onchange="showDiv(this)">
+                            <option></option>
+                            <option asp-for="PaymentMethod" value="Cash">Cash</option>
+                            <option asp-for="PaymentMethod" value="GCash">GCash</option>
+                            <option asp-for="PaymentMethod" value="PayMaya">PayMaya</option>
+                        </select>
+                        <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+                    </div>
+
+                    <div id="hidden_div" style="display: none">
+                        <div class="form-group">
+                            <label asp-for="AccountNumber" class="control-label"></label>
+                            <input asp-for="AccountNumber" class="form-control" placeholder="Account Number" />
+                            <span asp-validation-for="AccountNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AccountName" class="control-label"></label>
+                            <input asp-for="AccountName" class="form-control" placeholder="Account Name" />
+                            <span asp-validation-for="AccountName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Book" class="btn btn-primary" />
+                    </div>
+
+                </form>
             </div>
+            <div class="col-md-2"></div>
+        </div>
 
-            <div class="form-group">
-                <label asp-for="TotalPrice" class="control-label"></label>
+    }
+    else
+    {
+        <br />
+        <br />
 
-                <input asp-for="TotalPrice" id="total" value="" class="form-control" placeholder="Amount to Pay" />
-                <span asp-validation-for="TotalPrice" class="text-danger"></span>
-            </div>
+        <div class="container">
+            <h2 class="mb-4" style="text-align: center">Please <a href="https://localhost:44367/Identity/Account/Login">Login</a> first to continue.</h2><br />
+            
+            <br /><br />
+            <br />
+        </div>
+            }
 
-            <div class="form-group">
-                <label asp-for="PaymentMethod" class="control-label"></label>
-                <br />
-                    <select name="PaymentMethod" id="PaymentMethod" class="form-control" asp-for="PaymentMethod" onchange="showDiv(this)">
-                        <option></option>
-                        <option asp-for="PaymentMethod" value="Cash">Cash</option>
-                        <option asp-for="PaymentMethod" value="GCash">GCash</option>
-                        <option asp-for="PaymentMethod" value="PayMaya">PayMaya</option>
-                    </select>
-                    <span asp-validation-for="PaymentMethod" class="text-danger"></span>
-            </div>
+        </div>
+        <br />
+        <br />
 
-            <div id="hidden_div" style="display: none">
-                <div class="form-group">
-                    <label asp-for="AccountNumber" class="control-label"></label>
-                    <input asp-for="AccountNumber" class="form-control" placeholder="Account Number" />
-                    <span asp-validation-for="AccountNumber" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="AccountName" class="control-label"></label>
-                    <input asp-for="AccountName" class="form-control" placeholder="Account Name" />
-                    <span asp-validation-for="AccountName" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Book" class="btn btn-primary" />
-            </div>
-
-        </form>
-    </div>
-    <div class="col-md-2"></div>
-</div>
-
-        }
-        else
-        {
-        <h2 class="mb-4" style="text-align: center">Please login first to continue.</h2>
-        }
-
-    </div>
-<br />
-<br />
-
-<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
