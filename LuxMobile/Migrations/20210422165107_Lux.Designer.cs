@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LuxMobile.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210422103530_Lux")]
+    [Migration("20210422165107_Lux")]
     partial class Lux
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
