@@ -63,7 +63,7 @@
 
 <section class="ftco-section ftco-no-pb" id="services">
     <div class="container">
-
+        <h2 style="text-align: center">Available Services</h2>
         @if (SignInManager.IsSignedIn(User))
         {
             @if (@UserManager.GetUserName(User).ToString() == "gilbertcoquilla" || @UserManager.GetUserName(User).ToString() == "biancaongkingco" || @UserManager.GetUserName(User).ToString() == "shirleypaz")
@@ -115,7 +115,7 @@
 
             else
             {
-                <h2 style="text-align: center" >Available Services</h2>
+
                 <table class="table">
                     <tbody>
                         <tr>
