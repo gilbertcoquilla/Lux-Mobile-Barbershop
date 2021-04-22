@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LuxMobile.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210419103430_Shir")]
-    partial class Shir
+    [Migration("20210422103530_Lux")]
+    partial class Lux
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -117,17 +117,14 @@ namespace LuxMobile.Migrations
                         .IsRequired()
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CustomerName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PaymentMethod")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Service1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Service2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Service3")
+                    b.Property<string>("Service")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TotalPrice")

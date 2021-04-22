@@ -121,39 +121,27 @@ namespace LuxMobile.Controllers
             var list = context1.Appointments.ToList();
             return View(list);
         }
+
         [HttpPost]
         public IActionResult Booking(Appointment app)
         {
             var app1 = new Appointment()
             {
                 BookingDate = app.BookingDate,
+                CustomerName = app.CustomerName,
                 PaymentMethod = app.PaymentMethod,
                 BarberName = app.BarberName,
                 Address = app.Address,
                 AccountName = app.AccountName,
                 AccountNumber = app.AccountNumber,
-                //ServicesAvailed = app.ServicesAvailed,
-                Service1 = app.Service1,
-                Service2 = app.Service2,
-                Service3 = app.Service3,
+                Service = app.Service,
                 TotalPrice = app.TotalPrice
             };
 
             context1.Appointments.Add(app1);
             context1.SaveChanges();
-            ViewBag.Message = "Booking Successful. We'll message you 30mins prior your booking";
+            ViewBag.Message = "Success! You have booked an appointment on " + app.BookingDate + ".";
             return View();
-        }
-        public IActionResult GetPrice(string id)
-        {
-            decimal price = 0;
-            var service = context1.Services.Where(s => s.ServiceName == id).SingleOrDefault();
-            if (service == null)
-                price = 0;
-
-            else
-                price = service.Price;
-            return Json(price);
         }
 
     }

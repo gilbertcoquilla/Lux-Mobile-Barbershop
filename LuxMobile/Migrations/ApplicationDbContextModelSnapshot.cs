@@ -115,17 +115,14 @@ namespace LuxMobile.Migrations
                         .IsRequired()
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CustomerName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PaymentMethod")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Service1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Service2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Service3")
+                    b.Property<string>("Service")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TotalPrice")

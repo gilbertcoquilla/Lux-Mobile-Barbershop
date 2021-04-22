@@ -16,11 +16,15 @@ namespace LuxMobile.Models
         [Required(ErrorMessage = "Required.")]
         public DateTime? BookingDate { get; set; }
 
+        [Display(Name = "Customer Name")]
+        public string CustomerName { get; set; }
+
         [Display(Name = "Payment Method")]
         [Required(ErrorMessage = "Required.")]
         public string PaymentMethod { get; set; }
 
         [Display(Name = "Account Number")]
+        [DataType(DataType.CreditCard)]
         public string AccountNumber { get; set; }
 
         [Display(Name = "Account Name")]
@@ -34,19 +38,8 @@ namespace LuxMobile.Models
         [DataType(DataType.MultilineText)]
         public string Address { get; set; }
 
-        //Services Availed
-        //[Display(Name = "Avail Services: (Maximum of 3)")]
-        //[Required(ErrorMessage = "Please select at least one (1).")]
-        //public string ServicesAvailed { get; set; }
-
-        [Display(Name = "Service")]
-        public string Service1 { get; set; }
-
-        [Display(Name = "Service")]
-        public string Service2 { get; set; }
-
-        [Display(Name = "Service")]
-        public string Service3 { get; set; }
+        [Display(Name = "Service:")]
+        public string Service { get; set; }
 
         [Display(Name = "Total Price")]
         public string TotalPrice { get; set; }

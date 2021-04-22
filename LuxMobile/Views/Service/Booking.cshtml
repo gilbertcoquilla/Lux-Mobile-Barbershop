@@ -17,27 +17,45 @@
             document.getElementById('hidden_div').style.display = "none";
         }
     }
-</script>
-<script type="text/javascript">
-    function showServ(select) {
-        if (select.value == 'One') {
-            document.getElementById('s1').style.display = "block";
+
+    //Service
+    var t1 = 0;
+    function totalPrice1(select) {
+        if (select.value == 'Haircut') {
+            t1 = 550;
         }
-        else if (select.value == 'Two') {
-            document.getElementById('s1').style.display = "block";
-            document.getElementById('s2').style.display = "block";
+        if (select.value == 'Trim') {
+            t1 = 400;
         }
-        else if (select.value == 'Three') {
-            document.getElementById('s1').style.display = "block";
-            document.getElementById('s2').style.display = "block";
-            document.getElementById('s3').style.display = "block";
+        if (select.value == 'Shave') {
+            t1 = 200;
         }
-        else {
-            document.getElementById('s1').style.display = "none";
-            document.getElementById('s2').style.display = "none";
-            document.getElementById('s3').style.display = "none";
+        if (select.value == 'BeardTrim') {
+            t1 = 200;
         }
+        if (select.value == 'Massage') {
+            t1 = 700;
+        }
+        if (select.value == 'Emperor') {
+            t1 = 3999;
+        }
+        if (select.value == 'King') {
+            t1 = 1999;
+        }
+        if (select.value == 'Prince') {
+            t1 = 1000;
+        }
+        if (select.value == 'Shampoo') {
+            t1 = 300;
+        }
+        if (select.value == 'Facial') {
+            t1 = 500;
+        }
+
+        var total = document.getElementById('total');
+        total.setAttribute('value', t1);
     }
+
 </script>
 
 
@@ -70,6 +88,9 @@
                 @ViewBag.Message
             </div>
         }
+
+        @*<partial name="ServicesList" />*@
+
         <div class="row">
             <div class="col-md-12">
                 <form asp-action="Booking">
@@ -77,13 +98,16 @@
                     <div class="form-group">
                         <label asp-for="BarberName" class="control-label"></label>
                         <br />
-                        <select name="BarberName" id="BarberName" asp-for="BarberName">
-                            <option>Any Barber Available</option>
-                            <option asp-for="BarberName" value="Jean">Jean</option>
-                            <option asp-for="BarberName" value="Mark">Mark</option>
-                            <option asp-for="BarberName" value="John">John</option>
-                        </select>
-                        <span asp-validation-for="BarberName" class="text-danger"></span>
+                        <div class="col-md-4">
+                            <select name="BarberName" id="BarberName" class="form-control" asp-for="BarberName">
+                                <option asp-for="BarberName" value="AnyBarber">Any Barber</option>
+                                <option asp-for="BarberName" value="Jean">Jean</option>
+                                <option asp-for="BarberName" value="Mark">Mark</option>
+                                <option asp-for="BarberName" value="Bart">Bart</option>
+                            </select>
+                            <span asp-validation-for="BarberName" class="text-danger"></span>
+                        </div>
+
                     </div>
 
                     <div class="form-group">
@@ -93,117 +117,71 @@
                     </div>
 
                     <div class="form-group">
-                        <label asp-for="Address" class="control-label"></label>
-                        <textarea asp-for="Address" class="form-control"></textarea>
-                        <span asp-validation-for="Address" class="text-danger"></span>
+                        <label asp-for="CustomerName" class="control-label"></label>
+                        <input asp-for="CustomerName" value="@UserManager.GetUserName(User)" class="form-control" />
+                        <span asp-validation-for="CustomerName" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <label name="Services" id="Services" class="control-label">Avail Service/s: (Maximum of 3)</label>
-                        <br />
-                        <select name="Services" id="Services" onchange="showServ(this)">
-                            <option></option>
-                            <option value="One">1</option>
-                            <option value="Two">2</option>
-                            <option value="Three">3</option>
-                        </select>
-                        @*<span asp-validation-for="ServicesAvailed" class="text-danger"></span>*@
+                        <label asp-for="Address" class="control-label"></label>
+                        <textarea asp-for="Address" class="form-control" placeholder=""></textarea>
+                        <span asp-validation-for="Address" class="text-danger"></span>
                     </div>
 
-                    <div id="s1" style="display: none">
+                    <div id="s1">
                         <div class="form-group">
-                            <label asp-for="Service1" class="control-label"></label>
+                            <label asp-for="Service" class="control-label"></label>
                             <br />
-                            <select name="Service1" id="Service1" asp-for="Service1" onchange="togglePrice(this);">
-                                <option></option>
-                                <option value="Haircut">Haircut Php550</option>
-                                <option value="Trim">Trim Php400</option>
-                                <option value="Shave">Shave Php200</option>
-                                <option value="BeardTrim">Beard Trim Php200</option>
-                                <option value="Massage">Massage Php700</option>
-                                <option value="Emperor">Emperor Php3999</option>
-                                <option value="King">King Php1999</option>
-                                <option value="Prince">Prince Php1000</option>
-                                <option value="Shampoo">Shampoo Php300</option>
-                                <option value="Facial">Facial Php500</option>
-                            </select>
-                            <input id="total1" value="" />
-                            <span asp-validation-for="Service1" class="text-danger"></span>
-                        </div>
-                    </div>
-
-                    <div id="s2" style="display: none">
-                        <div class="form-group">
-                            <label asp-for="Service2" class="control-label"></label>
-                            <br />
-                            <select name="Service2" id="Service2" asp-for="Service2" onchange="togglePrice(this);">
-                                <option></option>
-                                <option value="Haircut">Haircut Php550</option>
-                                <option value="Trim">Trim Php400</option>
-                                <option value="Shave">Shave Php200</option>
-                                <option value="BeardTrim">Beard Trim Php200</option>
-                                <option value="Massage">Massage Php700</option>
-                                <option value="Emperor">Emperor Php3999</option>
-                                <option value="King">King Php1999</option>
-                                <option value="Prince">Prince Php1000</option>
-                                <option value="Shampoo">Shampoo Php300</option>
-                                <option value="Facial">Facial Php500</option>
-                            </select>
-                            <input id="total2" value="" />
-                            <span asp-validation-for="Service2" class="text-danger"></span>
-                        </div>
-                    </div>
-
-                    <div id="s3" style="display: none">
-                        <div class="form-group">
-                            <label asp-for="Service3" class="control-label"></label>
-                            <br />
-                            <select name="Service3" id="Service3" asp-for="Service3" onchange="togglePrice(this);">
-                                <option> </option>
-                                <option value="Haircut">Haircut Php550</option>
-                                <option value="Trim">Trim Php400</option>
-                                <option value="Shave">Shave Php200</option>
-                                <option value="BeardTrim">Beard Trim Php200</option>
-                                <option value="Massage">Massage Php700</option>
-                                <option value="Emperor">Emperor Php3999</option>
-                                <option value="King">King Php1999</option>
-                                <option value="Prince">Prince Php1000</option>
-                                <option value="Shampoo">Shampoo Php300</option>
-                                <option value="Facial">Facial Php500</option>
-                            </select>
-                            <input id="total3" value="" />
-                            <span asp-validation-for="Service3" class="text-danger"></span>
+                            <div class="col-md-6">
+                                <select name="Service" id="Service1" asp-for="Service" class="form-control" onchange="totalPrice1(this)">
+                                    <option></option>
+                                    <option value="Haircut">Haircut P550</option>
+                                    <option value="Trim">Trim P400</option>
+                                    <option value="Shave">Shave P200</option>
+                                    <option value="BeardTrim">Beard Trim P200</option>
+                                    <option value="Massage">Massage P700</option>
+                                    <option value="Emperor">Emperor P3999</option>
+                                    <option value="King">King P1999</option>
+                                    <option value="Prince">Prince P1000</option>
+                                    <option value="Shampoo">Shampoo P300</option>
+                                    <option value="Facial">Facial P500</option>
+                                </select>
+                                <span asp-validation-for="Service" class="text-danger"></span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label asp-for="TotalPrice" class="control-label"></label>
 
-                        <input asp-for="TotalPrice" id="total" class="form-control" onchange="getPrice(this)" />
+                        <input asp-for="TotalPrice" id="total" value="" class="form-control" placeholder="Amount to Pay" />
                         <span asp-validation-for="TotalPrice" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
                         <label asp-for="PaymentMethod" class="control-label"></label>
                         <br />
-                        <select name="PaymentMethod" id="PaymentMethod" asp-for="PaymentMethod" onchange="showDiv(this)">
-                            <option></option>
-                            <option asp-for="PaymentMethod" value="Cash">Cash</option>
-                            <option asp-for="PaymentMethod" value="GCash">GCash</option>
-                            <option asp-for="PaymentMethod" value="PayMaya">PayMaya</option>
-                        </select>
-                        <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+                        <div class="col-md-4">
+                            <select name="PaymentMethod" id="PaymentMethod" class="form-control" asp-for="PaymentMethod" onchange="showDiv(this)">
+                                <option></option>
+                                <option asp-for="PaymentMethod" value="Cash">Cash</option>
+                                <option asp-for="PaymentMethod" value="GCash">GCash</option>
+                                <option asp-for="PaymentMethod" value="PayMaya">PayMaya</option>
+                            </select>
+                            <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+                        </div>
+
                     </div>
 
                     <div id="hidden_div" style="display: none">
                         <div class="form-group">
                             <label asp-for="AccountNumber" class="control-label"></label>
-                            <input asp-for="AccountNumber" class="form-control" />
+                            <input asp-for="AccountNumber" class="form-control" placeholder="Account Number" />
                             <span asp-validation-for="AccountNumber" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="AccountName" class="control-label"></label>
-                            <input asp-for="AccountName" class="form-control" />
+                            <input asp-for="AccountName" class="form-control" placeholder="Account Name" />
                             <span asp-validation-for="AccountName" class="text-danger"></span>
                         </div>
                     </div>
@@ -229,45 +207,4 @@
 
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-
-@section Scripts{
-
-    <script>
-        function togglePrice(chosen) {
-
-            if ($(chosen).attr('id') == 'Service1') {
-                alert("One Service To Avail Only");
-                $service = $('#Service1').val();
-                console.log($service);
-                $('#total1').val(getPrice($service)); // not setting the value
-                console.log(getPrice($service));
-            }
-            else if ($(chosen).attr('id') == 'Service2') {
-                $('#total2').val(getPrice($('#Service3').val()));
-            }
-            else if ($(chosen).attr('id') == 'Service3') {
-                $('#total3').val(getPrice($('#Service3').val()));
-            }
-        }
-
-        function getPrice(serviceName) {
-            console.log(serviceName);
-            $.ajax({
-                url: location.origin + "/Service/GetPrice/" + serviceName,
-                type: "GET",
-                traditional: true,
-                success: function (data, textStatus) {
-                    alert(data);
-                    return data;
-                },
-                error: function () {
-                    swal("Something went wrong call the police");
-                    return 0;
-                }
-            });
-
-        }
-    </script>
-
-}
 

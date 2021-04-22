@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LuxMobile.Migrations
 {
-    public partial class Shir : Migration
+    public partial class Lux : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,14 +14,13 @@ namespace LuxMobile.Migrations
                     AppointmentNo = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BookingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PaymentMethod = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AccountNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AccountName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BarberName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Service1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Service2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Service3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Service = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TotalPrice = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
