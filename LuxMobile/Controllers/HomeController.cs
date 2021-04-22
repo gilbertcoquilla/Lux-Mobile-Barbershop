@@ -21,6 +21,7 @@ namespace LuxMobile.Controllers
             return View();
         }
         [HttpPost]
+        //working 
         public IActionResult Contact(ContactView record)
         {
             using (MailMessage mail = new MailMessage("LMB.ContactUs@gmail.com", record.Email))
@@ -44,9 +45,9 @@ namespace LuxMobile.Controllers
                     smtp.Port = 587;
                     smtp.Send(mail);
                     ViewBag.Message = "Inquiry sent.";
-
                 }
             }
+            ModelState.Clear();
             return View();
         }
 
