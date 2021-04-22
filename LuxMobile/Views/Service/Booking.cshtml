@@ -90,22 +90,21 @@
         }
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-2"></div>
+
+            <div class="col-md-8">
                 <form asp-action="Booking">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="BarberName" class="control-label"></label>
                         <br />
-                        <div class="col-md-4">
-                            <select name="BarberName" id="BarberName" class="form-control" asp-for="BarberName">
-                                <option asp-for="BarberName" value="AnyBarber">Any Barber</option>
-                                <option asp-for="BarberName" value="Jean">Jean</option>
-                                <option asp-for="BarberName" value="Mark">Mark</option>
-                                <option asp-for="BarberName" value="Bart">Bart</option>
-                            </select>
-                            <span asp-validation-for="BarberName" class="text-danger"></span>
-                        </div>
-
+                        <select name="BarberName" id="BarberName" class="form-control" asp-for="BarberName">
+                            <option asp-for="BarberName" value="AnyBarber">Any Barber</option>
+                            <option asp-for="BarberName" value="Jean">Jean</option>
+                            <option asp-for="BarberName" value="Mark">Mark</option>
+                            <option asp-for="BarberName" value="Bart">Bart</option>
+                        </select>
+                        <span asp-validation-for="BarberName" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
@@ -130,22 +129,20 @@
                         <div class="form-group">
                             <label asp-for="Service" class="control-label"></label>
                             <br />
-                            <div class="col-md-6">
-                                <select name="Service" id="Service1" asp-for="Service" class="form-control" onchange="totalPrice1(this)">
-                                    <option></option>
-                                    <option value="Haircut">Haircut P550</option>
-                                    <option value="Trim">Trim P400</option>
-                                    <option value="Shave">Shave P200</option>
-                                    <option value="BeardTrim">Beard Trim P200</option>
-                                    <option value="Massage">Massage P700</option>
-                                    <option value="Emperor">Emperor P3999</option>
-                                    <option value="King">King P1999</option>
-                                    <option value="Prince">Prince P1000</option>
-                                    <option value="Shampoo">Shampoo P300</option>
-                                    <option value="Facial">Facial P500</option>
-                                </select>
-                                <span asp-validation-for="Service" class="text-danger"></span>
-                            </div>
+                            <select name="Service" id="Service1" asp-for="Service" class="form-control" onchange="totalPrice1(this)">
+                                <option></option>
+                                <option value="Haircut">Haircut </option>
+                                <option value="Trim">Trim </option>
+                                <option value="Shave">Shave </option>
+                                <option value="BeardTrim">Beard Trim </option>
+                                <option value="Massage">Massage </option>
+                                <option value="Emperor">Emperor's Package </option>
+                                <option value="King">King's Package </option>
+                                <option value="Prince">Prince's Package </option>
+                                <option value="Shampoo">Shampoo </option>
+                                <option value="Facial">Facial </option>
+                            </select>
+                            <span asp-validation-for="Service" class="text-danger"></span>
                         </div>
                     </div>
 
@@ -159,16 +156,13 @@
                     <div class="form-group">
                         <label asp-for="PaymentMethod" class="control-label"></label>
                         <br />
-                        <div class="col-md-4">
-                            <select name="PaymentMethod" id="PaymentMethod" class="form-control" asp-for="PaymentMethod" onchange="showDiv(this)">
-                                <option></option>
-                                <option asp-for="PaymentMethod" value="Cash">Cash</option>
-                                <option asp-for="PaymentMethod" value="GCash">GCash</option>
-                                <option asp-for="PaymentMethod" value="PayMaya">PayMaya</option>
-                            </select>
-                            <span asp-validation-for="PaymentMethod" class="text-danger"></span>
-                        </div>
-
+                        <select name="PaymentMethod" id="PaymentMethod" class="form-control" asp-for="PaymentMethod" onchange="showDiv(this)">
+                            <option></option>
+                            <option asp-for="PaymentMethod" value="Cash">Cash</option>
+                            <option asp-for="PaymentMethod" value="GCash">GCash</option>
+                            <option asp-for="PaymentMethod" value="PayMaya">PayMaya</option>
+                        </select>
+                        <span asp-validation-for="PaymentMethod" class="text-danger"></span>
                     </div>
 
                     <div id="hidden_div" style="display: none">
@@ -190,19 +184,27 @@
 
                 </form>
             </div>
-
+            <div class="col-md-2"></div>
         </div>
 
     }
     else
     {
-        <h2 class="mb-4" style="text-align: center">Please login first to continue.</h2>
-    }
+        <br />
+        <br />
 
-</div>
-<br />
-<br />
+        <div class="container">
+            <h2 class="mb-4" style="text-align: center">Please <a href="https://localhost:44367/Identity/Account/Login">Login</a> first to continue.</h2><br />
+            
+            <br /><br />
+            <br />
+        </div>
+            }
 
-<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+        </div>
+        <br />
+        <br />
+
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
