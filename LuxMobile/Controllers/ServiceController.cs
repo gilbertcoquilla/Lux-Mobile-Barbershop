@@ -138,11 +138,24 @@ namespace LuxMobile.Controllers
                 TotalPrice = app.TotalPrice
             };
 
-            context1.Appointments.Add(app1);
-            context1.SaveChanges();
-            ViewBag.Message = "Success! You have booked an appointment on " + app.BookingDate + ".";
-            return View();
-        }
+            //var booked = app.BookingDate; 
+            //var dbooked = (from x in app1.BookingDate where x.BookingDate == booked select x).ToList();
+            //if (ModelState.IsValid)
+            //{
+            //    if (dbooked.count > 0)
+            //    {
+            //        ViewBag.Duplicate = "The date " + app.BookingDate + " is not available. Please pick a new Date and Time.";
+            //    }
+            //    else
+            //    {                }
+                    context1.Appointments.Add(app1);
+                    context1.SaveChanges();
+                    ViewBag.Message = "Success! You have booked an appointment on " + app.BookingDate + ".";
+                    ModelState.Clear(); 
+                return View();
+            }
+           
+        
 
     }
 }
