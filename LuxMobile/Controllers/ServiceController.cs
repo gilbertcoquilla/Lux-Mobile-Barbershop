@@ -132,6 +132,7 @@ namespace LuxMobile.Controllers
             {
                 BookingDate = app.BookingDate,
                 CustomerName = app.CustomerName,
+                ContactNo = app.ContactNo,
                 PaymentMethod = app.PaymentMethod,
                 BarberName = app.BarberName,
                 Address = app.Address,

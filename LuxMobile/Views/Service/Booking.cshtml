@@ -127,6 +127,12 @@
                     </div>
 
                     <div class="form-group">
+                        <label asp-for="ContactNo" class="control-label"></label>
+                        <input asp-for="ContactNo" value="" class="form-control" />
+                        <span asp-validation-for="ContactNo" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
                         <label asp-for="Address" class="control-label"></label>
                         <textarea asp-for="Address" class="form-control" placeholder="Unit Number/House Number/Building/Street Name/City/Barangay/Postal Code"></textarea>
                         <span asp-validation-for="Address" class="text-danger"></span>
