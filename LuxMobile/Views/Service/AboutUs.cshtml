@@ -61,14 +61,13 @@
     </div>
 </section>
 
-<section class="ftco-section ftco-no-pb" id="services" asp-area="serv">
+<section class="ftco-section ftco-no-pb" id="services">
     <div class="container">
         <h2 style="text-align: center">Available Services</h2>
         @if (SignInManager.IsSignedIn(User))
         {
             @if (@UserManager.GetUserName(User).ToString() == "gilbertcoquilla" || @UserManager.GetUserName(User).ToString() == "biancaongkingco" || @UserManager.GetUserName(User).ToString() == "shirleypaz")
             {
-                <h2 style="text-align: center" asp-controller="Service" asp-action="AboutUs">Available Services</h2>
                 <table class="table">
                     <tbody>
                         <tr>
@@ -203,7 +202,7 @@
     </div>
 </section>
 
-<section class="ftco-section" id="barbers">
+<section class="ftco-section" id="barbers" asp-for="barbers">
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-md-7 heading-section text-center ftco-animate">

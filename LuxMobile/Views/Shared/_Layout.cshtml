@@ -89,8 +89,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" asp-controller="Service" asp-action="AboutUs" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" asp-controller="Service" asp-action="AboutUs" asp-area="serv">Services</a>
-                            <a class="dropdown-item" asp-controller="Service" asp-action="Index">Barbers</a>
+                            <a class="dropdown-item" asp-controller="Service" asp-action="AboutUs">Services</a>
+                            <a class="dropdown-item" asp-controller="Service" asp-action="AboutUs">Barbers</a>
                             <a class="dropdown-item" asp-controller="Home" asp-action="Contact">Contact Us</a>
                             <a class="dropdown-item" asp-controller="Service" asp-action="Booking">Book Now!</a>
                         </div>
@@ -128,7 +128,6 @@
                             <li><a href="https://luxmobilebarbershop.azurewebsites.net/Identity/Account/Register?returnUrl=%2F"><span class="fa fa-chevron-right mr-2"></span>Register</a></li>
                             <li><a href="https://luxmobilebarbershop.azurewebsites.net/Identity/Account/Login"><span class="fa fa-chevron-right mr-2"></span>Log In</a></li>
                             <li><a asp-controller="Service" asp-action="BookedList"><span class="fa fa-chevron-right mr-2"></span>Schedules</a></li>
-                            @*<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>My Order</a></li>*@
                         </ul>
                     </div>
                 </div>
