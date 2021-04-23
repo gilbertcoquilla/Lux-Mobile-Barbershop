@@ -2,7 +2,7 @@
 
 namespace LuxMobile.Migrations
 {
-    public partial class Fi : Migration
+    public partial class Fina : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -21,7 +21,6 @@ namespace LuxMobile.Controllers
             return View();
         }
         [HttpPost]
-        //working 
         public IActionResult Contact(ContactView record)
         {
             using (MailMessage mail = new MailMessage("LMB.ContactUs@gmail.com", record.Email))
@@ -66,7 +65,6 @@ namespace LuxMobile.Controllers
             _logger = logger;
         }
 
-        //original home page
         public IActionResult Index()
         {
             return View();

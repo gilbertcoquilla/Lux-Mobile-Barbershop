@@ -27,7 +27,6 @@
 </head>
 
 <body>
-    <!--Top bar-->
     <div class="wrap">
         <div class="container">
             <div class="row">
@@ -45,11 +44,6 @@
                             <a href="https://www.instagram.com/" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
                             <a href="https://www.dribbble.com/" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
                         </p>
-                    </div>
-                    <!--User-->
-                    <div class="reg">
-                        @*<p class="mb-0"><a href="https://localhost:44367/Identity/Account/Register?returnUrl=%2F" class="mr-2">Sign Up</a> <a href="https://localhost:44367/Identity/Account/Login">Log In</a></p>*@
-                        
                     </div>
                 </div>
             </div>
@@ -73,13 +67,13 @@
             </button>
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="https://localhost:44367/" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="https://localhost:44367/Service/Gallery" class="nav-link">Gallery</a></li>
+                    <li class="nav-item active"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="nav-item"><a asp-controller="Service" asp-action="Gallery" class="nav-link">Gallery</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="~/Views/AboutUs.cshtml" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" asp-controller="Service" asp-action="AboutUs/#service">Services</a>
-                            <a class="dropdown-item" asp-controller="Service" asp-action="Index">Barbers</a>
+                            <a class="dropdown-item" asp-controller="Service" asp-action="AboutUs" asp-fragment="services">Services</a>
+                            <a class="dropdown-item" asp-controller="Service" asp-action="AboutUs" asp-fragment="barbers">Barbers</a>
                             <a class="dropdown-item" asp-controller="Home" asp-action="Contact">Contact Us</a>
                             <a class="dropdown-item" asp-controller="Service" asp-action="Booking">Book Now!</a>
                         </div>
@@ -279,7 +273,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-4">
-                    <a href="https://localhost:44367/Service/AboutUs#services" class="btn btn-primary d-block">View All Services and Products <span class="fa fa-long-arrow-right"></span></a>
+                    <a asp-controller="Service" asp-action="AboutUs" asp-fragment="services" class="btn btn-primary d-block">View All Services and Products <span class="fa fa-long-arrow-right"></span></a>
                 </div>
             </div>
         </div>
@@ -411,10 +405,8 @@
                     <div class="ftco-footer-widget mb-4 ml-md-4">
                         <h2 class="ftco-heading-2">My Accounts</h2>
                         <ul class="list-unstyled">
-                            @*<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>My Account</a></li>*@
                             <li><a href="https://localhost:44367/Identity/Account/Register"><span class="fa fa-chevron-right mr-2"></span>Register</a></li>
                             <li><a href="https://localhost:44367/Identity/Account/Login"><span class="fa fa-chevron-right mr-2"></span>Log In</a></li>
-                            @*<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>My Order</a></li>*@
                         </ul>
                     </div>
                 </div>
@@ -423,7 +415,6 @@
                         <h2 class="ftco-heading-2">Information</h2>
                         <ul class="list-unstyled">
                             <li><a href="https://localhost:44367/Service/AboutUs"><span class="fa fa-chevron-right mr-2"></span>About Us</a></li>
-                            @*<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Catalog</a></li>*@
                             <li><a href="https://localhost:44367/Home/ContactUs"><span class="fa fa-chevron-right mr-2"></span>Contact Us</a></li>
                             <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Term &amp; Conditions</a></li>
                         </ul>

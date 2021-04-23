@@ -8,8 +8,6 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item dropdown">
-            @*<a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Home/Home" title="Manage">Hello @UserManager.GetUserName(User)!</a>*@
-
             <a id="dropdown04" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Hello @UserManager.GetUserName(User)!
              </a>
@@ -19,16 +17,9 @@
                 </form>
             </div>
         </li>
-        @*<li class="nav-item">
-
-            </li>*@
-
     }
     else
     {
-        @*<li class="nav-item">
-                <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
-            </li>*@
         <li class="nav-item">
             <a class="nav-link" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
         </li>

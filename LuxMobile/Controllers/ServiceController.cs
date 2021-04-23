@@ -142,8 +142,6 @@ namespace LuxMobile.Controllers
                 TotalPrice = app.TotalPrice
             };
 
-            //reference: https://www.c-sharpcorner.com/UploadFile/abhikumarvatsa/example-on-view-to-controller-httppost-warn-on-duplicate/
-
             var dates = (from x in context1.Appointments where x.BookingDate == app.BookingDate select x).ToList();
             if (ModelState.IsValid)
             {
@@ -155,7 +153,7 @@ namespace LuxMobile.Controllers
                 {
                     context1.Appointments.Add(app1);
                     context1.SaveChanges();
-                    ViewBag.Message = "Booking Successful. We'll message you 30mins prior your booking";
+                    ViewBag.Message = "Booking successful! Your appointment for " + app.BookingDate + " is confirmed. We'll message you shortly.";
                     ModelState.Clear();
                 }
             }
