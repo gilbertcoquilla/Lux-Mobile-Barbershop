@@ -7,6 +7,10 @@
     "mssql2": {
       "type": "mssql",
       "connectionId": "lux"
+    },
+    "mssql3": {
+      "type": "mssql",
+      "connectionId": "MyConnection"
     }
   }
 }
