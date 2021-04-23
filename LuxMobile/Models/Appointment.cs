@@ -20,6 +20,9 @@ namespace LuxMobile.Models
         [Display(Name = "Customer Name")]
         public string CustomerName { get; set; }
 
+        [Display(Name = "Contact Number")]
+        public string ContactNo { get; set; }
+
         [Display(Name = "Payment Method")]
         [Required(ErrorMessage = "Required.")]
         public string PaymentMethod { get; set; }
