@@ -39,13 +39,13 @@
                                 No.
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.AccountName)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.AccountNumber)
-                            </th>
-                            <th>
                                 Barber
+                            </th>
+                            <th>
+                                Customer Name
+                            </th>
+                            <th>
+                                Contact No
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.BookingDate)
@@ -68,42 +68,39 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.AppointmentNo)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.AccountName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.AccountNumber)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.BarberName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.BookingDate)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Address)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Service)
-                                </td>
-                                @*<td>
-                                    @Html.DisplayFor(modelItem => item.Service2)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Service3)
-                                </td>*@
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PaymentMethod)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TotalPrice)
-                                </td>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AppointmentNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BarberName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CustomerName)
+                            </td>
+                            <td>
+                                @*//contact no*@
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BookingDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Service)
+                            </td>
 
-                            </tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PaymentMethod)
+                                @Html.DisplayFor(modelItem => item.AccountName)
+                                @Html.DisplayFor(modelItem => item.AccountNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalPrice)
+                            </td>
+
+                        </tr>
                         }
                     </tbody>
                 </table>

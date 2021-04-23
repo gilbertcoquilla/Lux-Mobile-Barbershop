@@ -28,9 +28,11 @@ namespace LuxMobile.Controllers
             {
                 mail.Subject = record.Subject;
 
-                string message = "Hello, " + record.SenderName + "!<br/><br/> We have received your inquiry. Here are the details: <br/><br/>" +
-                    "Contact Number: <strong>" + record.ContactNo + "</strong></br> Message: <br/><strong>" + record.Message + "</strong><br/><br/>" +
-                    "Thank you for contacting us. We have received your email, and we will reply to you as soon as possible. <br/></br><br/> " +
+                string message = "Hello, " + record.SenderName + "!<br/><br/> Thank you for reaching out! I hope you are having a great day. This auto-reply is just to let you know that" +
+                    " we have received your inquiry. <br/><br/>These are the details we've gathered: <br/><br/>" +
+                    "Contact Number: <strong> " + record.ContactNo + "<br/><br/></strong> Message: <br/><strong>" + record.Message + "</strong><br/><br/>" +
+                    " We will get back to you as soon as possible. If you have questions about our services, check out our About Us page for more details. <br/></br><br/>" +
+                    "If you have any additional information that you think will help us to assist you, feel free to reply to this email. <br/><br/><br/> " +
                     "Stay safe!<br/><br/><br/> Best Regards, <br/> LUX Mobile Team";
                 mail.Body = message;
                 mail.IsBodyHtml = true;
