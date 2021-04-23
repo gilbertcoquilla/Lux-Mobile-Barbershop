@@ -68,7 +68,7 @@
         {
             @if (@UserManager.GetUserName(User).ToString() == "gilbertcoquilla" || @UserManager.GetUserName(User).ToString() == "biancaongkingco" || @UserManager.GetUserName(User).ToString() == "shirleypaz")
             {
-                <h2 style="text-align: center" href="https://localhost:44367/Service/Index">List of Services</h2>
+                <h2 style="text-align: center" asp-controller="Service" asp-action="AboutUs">Available Services</h2>
                 <table class="table">
                     <tbody>
                         <tr>
