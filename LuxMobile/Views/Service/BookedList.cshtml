@@ -14,7 +14,7 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    @if (@UserManager.GetUserName(User).ToString() == "barberjean" || @UserManager.GetUserName(User).ToString() == "jros" || @UserManager.GetUserName(User).ToString() == "barbermark" || @UserManager.GetUserName(User).ToString() == "gilbertcoquilla" || @UserManager.GetUserName(User).ToString() == "biancaongkingco" || @UserManager.GetUserName(User).ToString() == "shirleypaz")
+    @if (@UserManager.GetUserName(User).ToString() == "barberjean" || @UserManager.GetUserName(User).ToString() == "barberbart" || @UserManager.GetUserName(User).ToString() == "barbermark" || @UserManager.GetUserName(User).ToString() == "gilbertcoquilla" || @UserManager.GetUserName(User).ToString() == "biancaongkingco" || @UserManager.GetUserName(User).ToString() == "shirleypaz")
     {
         <div class="hero-wrap" style="background-image: url('https://www.salonsuccessacademy.com/wp-content/uploads/2017/04/iStock-640279638-1024x684.jpg');" data-stellar-background-ratio="0.5">
             <div class="overlay"></div>
@@ -43,10 +43,10 @@
                                 Barber
                             </th>
                             <th>
-                                Customer Name
+                                Contact No
                             </th>
                             <th>
-                                Contact No
+                                Email 
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.BookingDate)
@@ -80,7 +80,7 @@
                                 @Html.DisplayFor(modelItem => item.CustomerName)
                             </td>
                             <td>
-                               @UserManager.FindByEmailAsync(userId)
+                               @*//contact no*@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.BookingDate)
