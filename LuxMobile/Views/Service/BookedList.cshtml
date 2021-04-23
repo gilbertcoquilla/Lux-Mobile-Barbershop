@@ -2,11 +2,12 @@
 @using LuxMobile.Models
 @model IEnumerable<LuxMobile.Models.Appointment>
 @{
-
+    var user = UserManager.GetUserAsync(User);
+    var userId = UserManager.GetUserId(User);
 }
 
 @inject SignInManager<ApplicationUser> SignInManager
-@inject UserManager<ApplicationUser> UserManager
+@inject UserManager<ApplicationUser> UserManager 
 
 
 
@@ -79,7 +80,7 @@
                                 @Html.DisplayFor(modelItem => item.CustomerName)
                             </td>
                             <td>
-                                @*//contact no*@
+                               @UserManager.FindByEmailAsync(userId)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.BookingDate)
