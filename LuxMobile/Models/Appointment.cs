@@ -45,6 +45,7 @@ namespace LuxMobile.Models
         [Display(Name = "Service:")]
         public string Service { get; set; }
 
+
         [Display(Name = "Total Price")]
         public string TotalPrice { get; set; }
     }
